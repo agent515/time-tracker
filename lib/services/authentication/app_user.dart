@@ -1,4 +1,4 @@
 class AppUser {
-  final userId;
+  final dynamic userId;
   const AppUser({required this.userId});
 }

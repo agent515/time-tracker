@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker_app/app/features/time-tracker/presentation/dashboard.dart';
+import 'package:time_tracker_app/app/signIn/auth_builder.dart';
 import 'package:time_tracker_app/app/signIn/signin.dart';
 
 class SlideTransitionRoute extends PageRouteBuilder {
@@ -19,9 +21,11 @@ class Routes {
   static Route routes(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return SlideTransitionRoute(SignIn());
+        return SlideTransitionRoute(AuthBuilder());
       case '/signin':
         return SlideTransitionRoute(SignIn());
+      case '/dashboard':
+        return SlideTransitionRoute(Dashboard());
       default:
         throw Exception('No matched route found.');
     }

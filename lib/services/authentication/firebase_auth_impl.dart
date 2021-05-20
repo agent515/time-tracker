@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:time_tracker_app/services/authentication/app_user.dart';
 import 'package:time_tracker_app/services/authentication/auth_base.dart';
 
-class FirebaseAuthImpl extends AuthBase {
-  FirebaseAuth _auth = FirebaseAuth.instance;
+class FirebaseAuthImpl implements AuthBase {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // * FirebaseAuth.instance can be injected here
   // * FirebaseAuthImpl(this._auth)
@@ -14,16 +14,16 @@ class FirebaseAuthImpl extends AuthBase {
   AppUser get currentUser => _firebaseUsertoAppUser(_auth.currentUser!);
 
   @override
-  Stream<AppUser> onAuthStateChanged() {
-    return _auth
-        .authStateChanges()
-        .map((User? user) => AppUser(userId: user?.uid));
-  }
+  Stream<AppUser> get onAuthStateChanges =>
+      _auth.authStateChanges().map((User? user) => AppUser(userId: user!.uid));
 
   @override
   Future<AppUser> signInAnonymously() async {
-    await _auth.signInAnonymously();
-    return currentUser;
+    final credential = await _auth.signInAnonymously();
+    if (credential.user != null) {
+      return _firebaseUsertoAppUser(credential.user!);
+    }
+    return AppUser(userId: '1234');
   }
 
   @override
