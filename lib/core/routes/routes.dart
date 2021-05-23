@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:time_tracker_app/app/features/time-tracker/presentation/dashboard.dart';
+import 'package:time_tracker_app/app/features/time-tracker/domain/entities/activity.dart';
+import 'package:time_tracker_app/app/features/time-tracker/presentation/pages/activity_timer_builder.dart';
+import 'package:time_tracker_app/app/features/time-tracker/presentation/pages/dashboard.dart';
 import 'package:time_tracker_app/app/signIn/auth_builder.dart';
 import 'package:time_tracker_app/app/signIn/signin.dart';
 
@@ -26,6 +28,10 @@ class Routes {
         return SlideTransitionRoute(SignIn());
       case '/dashboard':
         return SlideTransitionRoute(Dashboard());
+      case '/activity':
+        return SlideTransitionRoute(ActivityTimerBuilder(
+          activity: settings.arguments as Activity,
+        ));
       default:
         throw Exception('No matched route found.');
     }

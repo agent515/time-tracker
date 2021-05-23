@@ -1,0 +1,1 @@
+class SomeException implements Exception {}

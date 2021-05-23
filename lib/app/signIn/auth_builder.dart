@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:time_tracker_app/app/features/time-tracker/presentation/dashboard.dart';
+import 'package:time_tracker_app/app/features/time-tracker/presentation/pages/dashboard.dart';
 import 'package:time_tracker_app/app/signIn/signin.dart';
 import 'package:time_tracker_app/services/authentication/app_user.dart';
 import 'package:time_tracker_app/services/authentication/auth_base.dart';
@@ -25,8 +25,8 @@ class _AuthBuilderState extends State<AuthBuilder> {
             return SignIn();
           }
           return Dashboard();
-        } else
-          return CircularProgressIndicator();
+        }
+        return CircularProgressIndicator();
       },
     );
   }
