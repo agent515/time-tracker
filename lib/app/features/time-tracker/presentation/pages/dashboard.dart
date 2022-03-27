@@ -56,11 +56,21 @@ class _DashboardState extends State<Dashboard> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: kBlackDark,
+                  color: Colors.purple.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 height: 100,
                 width: double.infinity,
+                child: Center(
+                  child: Text(
+                    'Analytics coming soon!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20.0,
